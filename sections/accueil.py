@@ -5,12 +5,11 @@ from utils.data_loader import has_columns
 from utils.formatting import format_number
 
 CARDS = [
-    ("📊", "Vue nationale", "Indicateurs clés et évolution temporelle", "Vue nationale"),
-    ("📍", "Territoires", "Comparaison régions et préfectures", "Territoires"),
-    ("🗼", "Infrastructures", "Agences, agents Mobile Money, data centers", "Infrastructures"),
-    ("🏢", "Entreprises", "Répartition sectorielle de l'écosystème numérique", "Entreprises"),
-    ("📶", "Usages numériques", "Connectivité et usages sur le territoire", "Usages numériques"),
-    ("🧭", "Indicateurs", "Score de déficit numérique et priorités", "Indicateurs"),
+    ("📊", "Vue nationale", "Indicateurs clés et évolution", "Vue nationale"),
+    ("📍", "Territoires", "Régions et préfectures", "Territoires"),
+    ("🗼", "Infrastructures", "Agences, Mobile Money, data centers", "Infrastructures"),
+    ("🏢", "Écosystème numérique", "Entreprises, secteurs et usages", "Écosystème numérique"),
+    ("🧭", "Indicateurs", "Score de déficit et priorités", "Indicateurs"),
 ]
 
 
@@ -19,12 +18,7 @@ def render(df):
         """
         <div class="tdi-hero">
             <h1>Piloter l'économie numérique du <span class="tdi-hero-accent">Togo</span></h1>
-            <p>
-                TOGO DIGITAL INTELLIGENCE centralise les indicateurs de connectivité,
-                d'infrastructures et d'usages numériques pour permettre une lecture
-                rapide et fiable des disparités territoriales et des priorités
-                d'investissement.
-            </p>
+            <p>Connectivité, infrastructures et usages — en un coup d'œil.</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -38,12 +32,11 @@ def render(df):
     ]
     render_kpi_row(kpis)
 
-    st.markdown("<div style='height:22px'></div>", unsafe_allow_html=True)
-    st.markdown('<div class="tdi-section-title">Explorer la plateforme</div>', unsafe_allow_html=True)
+    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
 
-    cols = st.columns(3)
+    cols = st.columns(len(CARDS))
     for i, (icon, title, text, target) in enumerate(CARDS):
-        with cols[i % 3]:
+        with cols[i]:
             st.markdown(
                 f"""
                 <div class="tdi-nav-card">

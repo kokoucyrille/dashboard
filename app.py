@@ -14,13 +14,11 @@ from components.footer import render_footer
 from components.header import render_header
 from components.navigation import SECTIONS, render_navigation
 from sections import (
-    a_propos,
     accueil,
-    entreprises,
+    ecosysteme_numerique,
     indicateurs,
     infrastructures,
     territoires,
-    usages_numeriques,
     vue_nationale,
 )
 from utils.data_loader import load_csv
@@ -46,20 +44,20 @@ st.session_state.active_section = selected
 # déposés dans data/ (voir data/README.md pour le schéma attendu).
 df = load_csv("dataset_economie_numerique.csv")
 
+# 6 entrées maximum dans le menu horizontal (voir components/navigation.py) :
+# Entreprises + Usages numériques ont été fusionnées en "Écosystème numérique".
 SECTIONS_WITH_FILTERS = {
     "Vue nationale": vue_nationale,
     "Territoires": territoires,
     "Infrastructures": infrastructures,
-    "Entreprises": entreprises,
-    "Usages numériques": usages_numeriques,
+    "Écosystème numérique": ecosysteme_numerique,
     "Indicateurs": indicateurs,
 }
 SECTIONS_WITHOUT_FILTERS = {
     "Accueil": accueil,
-    "À propos": a_propos,
 }
 
-st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
+st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
 
 if selected in SECTIONS_WITH_FILTERS:
     col_filters, col_content = st.columns([1, 4], gap="large")

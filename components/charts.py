@@ -10,14 +10,18 @@ PLOTLY_LAYOUT = dict(
     plot_bgcolor="rgba(0,0,0,0)",
     paper_bgcolor="rgba(0,0,0,0)",
     colorway=PALETTE,
-    margin=dict(l=10, r=10, t=40, b=10),
+    margin=dict(l=10, r=10, t=30, b=10),
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
     hoverlabel=dict(bgcolor="#0B1F33", font_color="white", font_family="Inter"),
 )
 
+# Hauteur par défaut des graphiques : uniforme pour un vrai rendu "dashboard"
+# (grille régulière, pas de cartes à hauteurs disparates).
+DEFAULT_CHART_HEIGHT = 340
 
-def _apply_theme(fig: go.Figure) -> go.Figure:
-    fig.update_layout(**PLOTLY_LAYOUT)
+
+def _apply_theme(fig: go.Figure, height: int = DEFAULT_CHART_HEIGHT) -> go.Figure:
+    fig.update_layout(**PLOTLY_LAYOUT, height=height)
     fig.update_xaxes(gridcolor="#EEF1F5", zeroline=False)
     fig.update_yaxes(gridcolor="#EEF1F5", zeroline=False)
     return fig
@@ -102,8 +106,8 @@ def choropleth_map(geojson, df, locations, featureidkey, color, hover_name=None,
         title=title,
         color_continuous_scale=["#F5F7FA", "#4C9A82", "#006A4E"],
     )
-    fig.update_layout(margin=dict(l=0, r=0, t=40, b=0))
-    return _apply_theme(fig)
+    fig.update_layout(margin=dict(l=0, r=0, t=30, b=0))
+    return _apply_theme(fig, height=460)
 
 
 def gauge(value, title="", max_value=100):

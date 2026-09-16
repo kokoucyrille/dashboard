@@ -33,10 +33,17 @@ html, body, [class*="css"] {
     visibility: hidden;
     height: 0;
 }
+/* Le dashboard occupe toute la largeur de la page — pas de colonne
+   centrée à 1400px comme dans un article. */
 .block-container {
-    padding-top: 1rem;
-    padding-bottom: 2rem;
-    max-width: 1400px;
+    padding-top: 0.6rem;
+    padding-bottom: 1rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    max-width: 100%;
+}
+[data-testid="stAppViewContainer"], [data-testid="stMain"] {
+    max-width: 100%;
 }
 
 /* ---------- HEADER ---------- */
@@ -46,22 +53,45 @@ html, body, [class*="css"] {
     justify-content: space-between;
     background: var(--tdi-navy);
     border-radius: var(--tdi-radius);
-    padding: 18px 28px;
-    margin-bottom: 14px;
+    padding: 12px 24px;
+    margin-bottom: 10px;
     box-shadow: var(--tdi-shadow);
 }
-.tdi-header-left { display: flex; align-items: center; gap: 14px; }
-.tdi-flag { font-size: 28px; line-height: 1; }
+.tdi-header-left { display: flex; align-items: center; gap: 12px; }
+.tdi-flag { font-size: 22px; line-height: 1; }
+.tdi-logo-img {
+    height: 42px;
+    width: auto;
+    max-width: 90px;
+    object-fit: contain;
+    background: var(--tdi-white);
+    border-radius: 8px;
+    padding: 3px 6px;
+}
+.tdi-logo-placeholder {
+    height: 42px;
+    width: 42px;
+    border-radius: 8px;
+    background: var(--tdi-white);
+    color: var(--tdi-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    border: 1px dashed rgba(11,31,51,0.25);
+}
 .tdi-title {
     color: var(--tdi-white);
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 800;
     letter-spacing: 0.4px;
     line-height: 1.15;
 }
 .tdi-subtitle {
     color: #C7D2DE;
-    font-size: 12.5px;
+    font-size: 11.5px;
     font-weight: 400;
     margin-top: 2px;
 }
@@ -79,7 +109,7 @@ html, body, [class*="css"] {
 }
 
 /* ---------- NAVIGATION HORIZONTALE (streamlit-option-menu) ---------- */
-.tdi-nav-wrapper { margin-bottom: 18px; }
+.tdi-nav-wrapper { margin-bottom: 10px; }
 div[data-testid="stHorizontalBlock"] > div:has(> div > .nav-link) { }
 nav.nav {
     background: var(--tdi-white) !important;
@@ -109,7 +139,7 @@ nav.nav {
     background: var(--tdi-white);
     border: 1px solid var(--tdi-border);
     border-radius: var(--tdi-radius);
-    padding: 18px 18px 14px 18px;
+    padding: 14px 16px 12px 16px;
     box-shadow: var(--tdi-shadow);
     transition: box-shadow 0.15s ease;
     height: 100%;
@@ -138,24 +168,24 @@ nav.nav {
 
 /* ---------- SECTIONS / TITRES ---------- */
 .tdi-section-title {
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--tdi-navy);
-    margin: 6px 0 2px 0;
+    margin: 2px 0 1px 0;
 }
 .tdi-section-question {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--tdi-text-light);
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 .tdi-insight {
     background: rgba(0, 106, 78, 0.06);
     border-left: 3px solid var(--tdi-green);
     border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 12.5px;
     color: var(--tdi-text);
-    margin: 10px 0 18px 0;
+    margin: 6px 0 4px 0;
 }
 
 /* ---------- CARTES / CONTENEURS DE GRAPHIQUES ---------- */
@@ -163,9 +193,9 @@ nav.nav {
     background: var(--tdi-white);
     border: 1px solid var(--tdi-border);
     border-radius: var(--tdi-radius);
-    padding: 16px 18px;
+    padding: 12px 16px 6px 16px;
     box-shadow: var(--tdi-shadow);
-    margin-bottom: 18px;
+    margin-bottom: 12px;
 }
 
 /* ---------- PLACEHOLDER (pas de données fictives) ---------- */
@@ -195,12 +225,12 @@ nav.nav {
 .tdi-hero {
     background: linear-gradient(135deg, var(--tdi-navy) 0%, #142F4A 100%);
     border-radius: var(--tdi-radius);
-    padding: 34px 30px;
-    margin-bottom: 20px;
+    padding: 20px 26px;
+    margin-bottom: 12px;
     color: var(--tdi-white);
 }
-.tdi-hero h1 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-.tdi-hero p { font-size: 13.5px; color: #C7D2DE; max-width: 640px; line-height: 1.6; }
+.tdi-hero h1 { font-size: 21px; font-weight: 800; margin-bottom: 4px; }
+.tdi-hero p { font-size: 12.5px; color: #C7D2DE; max-width: 640px; line-height: 1.4; margin: 0; }
 .tdi-hero .tdi-hero-accent { color: var(--tdi-yellow); }
 
 /* ---------- CARTES DE NAVIGATION (Accueil) ---------- */
@@ -237,16 +267,26 @@ div.stButton > button[kind="primary"] {
 
 /* ---------- FOOTER ---------- */
 .tdi-footer {
-    margin-top: 28px;
-    padding: 20px 24px;
+    margin-top: 10px;
+    padding: 12px 20px;
     background: var(--tdi-navy);
     border-radius: var(--tdi-radius);
     text-align: center;
 }
-.tdi-footer-title { color: var(--tdi-white); font-weight: 800; font-size: 13.5px; letter-spacing: 0.4px; }
-.tdi-footer-sub { color: #A9B7C6; font-size: 11.5px; margin-top: 4px; }
-.tdi-footer-motto { color: var(--tdi-yellow); font-size: 11px; font-weight: 700; margin-top: 8px; letter-spacing: 0.5px; }
-.tdi-footer-tags { color: #6E8299; font-size: 10.5px; margin-top: 6px; letter-spacing: 1px; text-transform: uppercase; }
+.tdi-footer-title { color: var(--tdi-white); font-weight: 800; font-size: 12.5px; letter-spacing: 0.4px; }
+.tdi-footer-motto { color: var(--tdi-yellow); font-size: 10.5px; font-weight: 700; margin-top: 5px; letter-spacing: 0.4px; }
+
+/* Expander "À propos" discret, en bas de page */
+div[data-testid="stExpander"] {
+    margin-top: 8px;
+    border: 1px solid var(--tdi-border);
+    border-radius: 10px;
+}
+div[data-testid="stExpander"] summary {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--tdi-text-light);
+}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 640px) {
