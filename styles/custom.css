@@ -1,0 +1,257 @@
+/* ==========================================================================
+   TOGO DIGITAL INTELLIGENCE — Design System
+   Palette : vert #006A4E · jaune #FFCE00 · rouge #D21034
+             navy #0B1F33 · gris clair #F5F7FA · gris texte #334155
+   ========================================================================== */
+
+:root {
+    --tdi-green: #006A4E;
+    --tdi-yellow: #FFCE00;
+    --tdi-red: #D21034;
+    --tdi-navy: #0B1F33;
+    --tdi-bg: #F5F7FA;
+    --tdi-text: #334155;
+    --tdi-text-light: #64748B;
+    --tdi-border: #E2E8F0;
+    --tdi-white: #FFFFFF;
+    --tdi-radius: 14px;
+    --tdi-shadow: 0 1px 3px rgba(11, 31, 51, 0.06), 0 1px 2px rgba(11, 31, 51, 0.04);
+    --tdi-shadow-hover: 0 4px 14px rgba(11, 31, 51, 0.08);
+}
+
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--tdi-text);
+}
+
+.stApp {
+    background-color: var(--tdi-bg);
+}
+
+/* Nettoyage de l'UI par défaut Streamlit */
+#MainMenu, footer, header[data-testid="stHeader"] {
+    visibility: hidden;
+    height: 0;
+}
+.block-container {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    max-width: 1400px;
+}
+
+/* ---------- HEADER ---------- */
+.tdi-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--tdi-navy);
+    border-radius: var(--tdi-radius);
+    padding: 18px 28px;
+    margin-bottom: 14px;
+    box-shadow: var(--tdi-shadow);
+}
+.tdi-header-left { display: flex; align-items: center; gap: 14px; }
+.tdi-flag { font-size: 28px; line-height: 1; }
+.tdi-title {
+    color: var(--tdi-white);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    line-height: 1.15;
+}
+.tdi-subtitle {
+    color: #C7D2DE;
+    font-size: 12.5px;
+    font-weight: 400;
+    margin-top: 2px;
+}
+.tdi-header-right { display: flex; align-items: center; gap: 10px; }
+.tdi-badge {
+    background: rgba(255, 206, 0, 0.12);
+    color: var(--tdi-yellow);
+    border: 1px solid rgba(255, 206, 0, 0.35);
+    border-radius: 999px;
+    padding: 5px 14px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* ---------- NAVIGATION HORIZONTALE (streamlit-option-menu) ---------- */
+.tdi-nav-wrapper { margin-bottom: 18px; }
+div[data-testid="stHorizontalBlock"] > div:has(> div > .nav-link) { }
+nav.nav {
+    background: var(--tdi-white) !important;
+    border-radius: var(--tdi-radius) !important;
+    box-shadow: var(--tdi-shadow) !important;
+    padding: 6px !important;
+}
+
+/* ---------- ZONE FILTRES (colonne gauche) ---------- */
+.tdi-filters-card {
+    background: var(--tdi-white);
+    border: 1px solid var(--tdi-border);
+    border-radius: var(--tdi-radius);
+    padding: 18px 16px;
+    box-shadow: var(--tdi-shadow);
+}
+.tdi-filters-title {
+    color: var(--tdi-navy);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+/* ---------- KPI CARDS ---------- */
+.tdi-kpi-card {
+    background: var(--tdi-white);
+    border: 1px solid var(--tdi-border);
+    border-radius: var(--tdi-radius);
+    padding: 18px 18px 14px 18px;
+    box-shadow: var(--tdi-shadow);
+    transition: box-shadow 0.15s ease;
+    height: 100%;
+}
+.tdi-kpi-card:hover { box-shadow: var(--tdi-shadow-hover); }
+.tdi-kpi-icon { font-size: 18px; margin-bottom: 6px; }
+.tdi-kpi-label {
+    font-size: 12.5px;
+    color: var(--tdi-text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+}
+.tdi-kpi-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--tdi-navy);
+    line-height: 1.1;
+}
+.tdi-kpi-delta {
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+/* ---------- SECTIONS / TITRES ---------- */
+.tdi-section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--tdi-navy);
+    margin: 6px 0 2px 0;
+}
+.tdi-section-question {
+    font-size: 13px;
+    color: var(--tdi-text-light);
+    margin-bottom: 14px;
+}
+.tdi-insight {
+    background: rgba(0, 106, 78, 0.06);
+    border-left: 3px solid var(--tdi-green);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--tdi-text);
+    margin: 10px 0 18px 0;
+}
+
+/* ---------- CARTES / CONTENEURS DE GRAPHIQUES ---------- */
+.tdi-chart-card {
+    background: var(--tdi-white);
+    border: 1px solid var(--tdi-border);
+    border-radius: var(--tdi-radius);
+    padding: 16px 18px;
+    box-shadow: var(--tdi-shadow);
+    margin-bottom: 18px;
+}
+
+/* ---------- PLACEHOLDER (pas de données fictives) ---------- */
+.tdi-empty-state {
+    background: var(--tdi-white);
+    border: 1px dashed var(--tdi-border);
+    border-radius: var(--tdi-radius);
+    padding: 30px 24px;
+    text-align: center;
+    margin-bottom: 18px;
+}
+.tdi-empty-state .tdi-empty-icon { font-size: 22px; margin-bottom: 8px; }
+.tdi-empty-state .tdi-empty-title {
+    font-weight: 700;
+    color: var(--tdi-navy);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+.tdi-empty-state .tdi-empty-text {
+    font-size: 12.5px;
+    color: var(--tdi-text-light);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ---------- HERO (Accueil) ---------- */
+.tdi-hero {
+    background: linear-gradient(135deg, var(--tdi-navy) 0%, #142F4A 100%);
+    border-radius: var(--tdi-radius);
+    padding: 34px 30px;
+    margin-bottom: 20px;
+    color: var(--tdi-white);
+}
+.tdi-hero h1 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.tdi-hero p { font-size: 13.5px; color: #C7D2DE; max-width: 640px; line-height: 1.6; }
+.tdi-hero .tdi-hero-accent { color: var(--tdi-yellow); }
+
+/* ---------- CARTES DE NAVIGATION (Accueil) ---------- */
+.tdi-nav-card {
+    background: var(--tdi-white);
+    border: 1px solid var(--tdi-border);
+    border-radius: var(--tdi-radius);
+    padding: 16px;
+    box-shadow: var(--tdi-shadow);
+    height: 100%;
+}
+.tdi-nav-card-icon { font-size: 20px; margin-bottom: 6px; }
+.tdi-nav-card-title { font-weight: 700; color: var(--tdi-navy); font-size: 14px; }
+.tdi-nav-card-text { font-size: 12px; color: var(--tdi-text-light); margin-top: 4px; }
+
+/* ---------- BOUTONS ---------- */
+div.stButton > button {
+    border-radius: 10px;
+    border: 1px solid var(--tdi-border);
+    background: var(--tdi-white);
+    color: var(--tdi-navy);
+    font-weight: 600;
+    font-size: 13px;
+}
+div.stButton > button:hover {
+    border-color: var(--tdi-green);
+    color: var(--tdi-green);
+}
+div.stButton > button[kind="primary"] {
+    background: var(--tdi-green);
+    color: var(--tdi-white);
+    border: none;
+}
+
+/* ---------- FOOTER ---------- */
+.tdi-footer {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--tdi-navy);
+    border-radius: var(--tdi-radius);
+    text-align: center;
+}
+.tdi-footer-title { color: var(--tdi-white); font-weight: 800; font-size: 13.5px; letter-spacing: 0.4px; }
+.tdi-footer-sub { color: #A9B7C6; font-size: 11.5px; margin-top: 4px; }
+.tdi-footer-motto { color: var(--tdi-yellow); font-size: 11px; font-weight: 700; margin-top: 8px; letter-spacing: 0.5px; }
+.tdi-footer-tags { color: #6E8299; font-size: 10.5px; margin-top: 6px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+    .tdi-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .tdi-title { font-size: 17px; }
+    .tdi-hero h1 { font-size: 20px; }
+    .block-container { padding-left: 0.8rem; padding-right: 0.8rem; }
+}
